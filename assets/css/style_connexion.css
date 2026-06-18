@@ -1,0 +1,121 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(45deg, #1F4279, #C00060);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+}
+
+.card {
+        background: linear-gradient(45deg, #1F4279, #C00020);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 420px;
+}
+
+h1 {
+        text-align: center;
+        color: #1F4E79;
+        margin-bottom: 8px;
+        font-size: 24px;
+}
+
+.sous-titre {
+        text-align: center;
+        color: #777;
+        font-size: 14px;
+        margin-bottom: 28px;
+}
+
+/* Bloc d'erreurs */
+.erreurs {
+        background: #FFF0F0;
+        border-left: 5px solid #C00000;
+        border-radius: 6px;
+        padding: 14px 16px;
+        margin-bottom: 22px;
+        animation: shake 0.4s ease;
+}
+
+/* Petite animation pour attirer l'attention sur l'erreur */
+@keyframes shake {
+        0%   { transform: translateX(0); }
+        25%  { transform: translateX(-6px); }
+        50%  { transform: translateX(6px); }
+        75%  { transform: translateX(-4px); }
+        100% { transform: translateX(0); }
+}
+
+.erreurs p {
+        color: #C00000;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 6px;
+}
+
+.erreurs ul {
+        padding-left: 18px;
+}
+
+.erreurs ul li {
+        color: #C00000;
+        font-size: 14px;
+        margin-bottom: 4px;
+}
+
+label {
+        display: block;
+        font-size: 13px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 5px;
+}
+
+input {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        margin-bottom: 18px;
+        transition: border 0.2s;
+		background: linear-gradient(45deg, #1F4279, #C00012);
+}
+
+input:focus {
+        outline: none;
+        border-color: #2E75B6;
+}
+
+/* Bordure rouge sur les champs si erreur */
+.champ-erreur { border-color: #C00000 !important; }
+
+button {
+        width: 100%;
+        padding: 12px;
+        background: #1F4E79;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+}
+
+button:hover { background: #2E75B6; }
+
+.lien {
+        text-align: center;
+        margin-top: 18px;
+        font-size: 13px;
+        color: #555;
+}
+
+.lien a { color: #2E75B6; text-decoration: none; }
+.lien a:hover { text-decoration: underline; }
