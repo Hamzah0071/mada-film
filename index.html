@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>MG Film </title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <title>MG Film — Cinéma & Critiques</title>
+  <meta name="description" content="Actualités cinéma, critiques de films, analyses et tendances du 7ème art">
+  <meta name="keywords" content="cinéma, films, critiques, sorties, acteurs, réalisateurs">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -25,7 +21,78 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
- 
+  <style>
+    /* ─── Film-themed overrides ─── */
+    :root {
+      --film-gold: #e8b94f;
+      --film-dark: #0d0d0d;
+      --film-red:  #c0392b;
+    }
+
+    /* Star rating helper */
+    .stars { color: var(--film-gold); font-size: .85rem; letter-spacing: 1px; }
+
+    /* Badge pill for genre/category */
+    .genre-pill {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .genre-pill.action   { background: #c0392b22; color: #c0392b; }
+    .genre-pill.drama    { background: #2980b922; color: #2980b9; }
+    .genre-pill.sci-fi   { background: #8e44ad22; color: #8e44ad; }
+    .genre-pill.thriller { background: #e67e2222; color: #e67e22; }
+    .genre-pill.comedy   { background: #27ae6022; color: #27ae60; }
+    .genre-pill.animation{ background: #16a08522; color: #16a085; }
+
+    /* Slider overlay tweak — make text pop on film stills */
+    .slider .swiper-slide .content {
+      background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.25) 70%, transparent 100%);
+    }
+    .slider .swiper-slide .content .meta-row {
+      display: flex; align-items: center; gap: .6rem;
+      margin-bottom: .4rem; font-size: .8rem; color: #bbb;
+    }
+    .slider .swiper-slide .content .stars { font-size: 1rem; }
+
+    /* Post entry mini-meta */
+    .film-meta {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .75rem; color: #888; margin-bottom: .3rem;
+    }
+    .film-meta .stars { font-size: .75rem; }
+
+    /* "En salle" badge */
+    .in-theaters {
+      display: inline-block;
+      background: var(--film-red);
+      color: #fff;
+      font-size: .65rem; font-weight: 700;
+      padding: 1px 7px; border-radius: 3px;
+      text-transform: uppercase; letter-spacing: .07em;
+    }
+
+    /* Trending list tweak */
+    .trending .trending-post li a h3 { font-size: .88rem; }
+
+    /* Director credit line */
+    .director-line { font-size: .8rem; color: #777; margin-bottom: .3rem; }
+    .director-line span { color: #444; font-weight: 600; }
+
+    /* Section accent bar */
+    .section-title h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: var(--film-gold);
+      margin-top: 6px;
+    }
+  </style>
 </head>
 
 <body class="index-page">
@@ -34,31 +101,29 @@
     <div class="container position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">MG Film</h1>
+        <h1 class="sitename">MG<span style="color:var(--film-gold)">Film</span></h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="single-post.html">Single Post</a></li>
-          <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="index.html" class="active">Accueil</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="single-post.html">Critique</a></li>
+          <li class="dropdown"><a href="#"><span>Genres</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="category.html">Category 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <li><a href="category.html">Action & Aventure</a></li>
+              <li><a href="category.html">Drame</a></li>
+              <li><a href="category.html">Science-Fiction</a></li>
+              <li><a href="category.html">Comédie</a></li>
+              <li class="dropdown"><a href="#"><span>Plus de genres</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
+                  <li><a href="#">Thriller</a></li>
+                  <li><a href="#">Animation</a></li>
+                  <li><a href="#">Horreur</a></li>
+                  <li><a href="#">Documentaire</a></li>
+                  <li><a href="#">Romance</a></li>
                 </ul>
               </li>
-              <li><a href="category.html">Category 2</a></li>
-              <li><a href="category.html">Category 3</a></li>
-              <li><a href="category.html">Category 4</a></li>
             </ul>
           </li>
           <li><a href="contact.html">Contact</a></li>
@@ -78,31 +143,19 @@
 
   <main class="main">
 
-    <!-- Slider Section -->
+    <!-- ─── Slider / Hero ─── -->
     <section id="slider" class="slider section dark-background">
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="swiper init-swiper">
-
           <script type="application/json" class="swiper-config">
             {
               "loop": true,
               "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
+              "autoplay": { "delay": 5000 },
               "slidesPerView": "auto",
               "centeredSlides": true,
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "navigation": {
-                "nextEl": ".swiper-button-next",
-                "prevEl": ".swiper-button-prev"
-              }
+              "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true },
+              "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }
             }
           </script>
 
@@ -110,173 +163,198 @@
 
             <div class="swiper-slide" style="background-image: url('assets/img/post-slide-1.jpg');">
               <div class="content">
-                <h2><a href="single-post.html">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
+                <div class="meta-row">
+                  <span class="genre-pill action">Action</span>
+                  <span class="in-theaters">En salle</span>
+                  <span class="stars">★★★★☆</span>
+                </div>
+                <h2><a href="single-post.html">Dune : Deuxième Partie — L'épopée du désert s'achève en apothéose</a></h2>
+                <p>Denis Villeneuve signe un chef-d'œuvre visuel et narratif. Paul Atreides embrasse son destin dans une fresque épique qui redéfinit la science-fiction au cinéma.</p>
               </div>
             </div>
 
             <div class="swiper-slide" style="background-image: url('assets/img/post-slide-2.jpg');">
               <div class="content">
-                <h2><a href="single-post.html">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
+                <div class="meta-row">
+                  <span class="genre-pill thriller">Thriller</span>
+                  <span class="stars">★★★★★</span>
+                </div>
+                <h2><a href="single-post.html">Oppenheimer — Nolan déconstruit le mythe du père de la bombe atomique</a></h2>
+                <p>Un film haletant, intellectuellement exigeant, porté par la performance magistrale de Cillian Murphy dans le rôle de sa carrière.</p>
               </div>
             </div>
 
             <div class="swiper-slide" style="background-image: url('assets/img/post-slide-3.jpg');">
               <div class="content">
-                <h2><a href="single-post.html">13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</a></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
+                <div class="meta-row">
+                  <span class="genre-pill animation">Animation</span>
+                  <span class="in-theaters">En salle</span>
+                  <span class="stars">★★★★☆</span>
+                </div>
+                <h2><a href="single-post.html">Le Garçon et le Héron — Miyazaki signe son testament cinématographique</a></h2>
+                <p>Un voyage onirique et personnel dans un monde imaginaire. Le maître de l'animation japonaise nous offre peut-être son œuvre la plus intime.</p>
               </div>
             </div>
 
             <div class="swiper-slide" style="background-image: url('assets/img/post-slide-4.jpg');">
               <div class="content">
-                <h2><a href="single-post.html">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
+                <div class="meta-row">
+                  <span class="genre-pill drama">Drame</span>
+                  <span class="stars">★★★★☆</span>
+                </div>
+                <h2><a href="single-post.html">Anatomie d'une Chute — La Palme d'Or qui bouleverse les certitudes</a></h2>
+                <p>Justine Triet construit un thriller judiciaire implacable où chaque réplique est un couteau. Sandra Hüller est renversante de nuance et d'ambiguïté.</p>
               </div>
             </div>
+
           </div>
 
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
-
           <div class="swiper-pagination"></div>
         </div>
-
       </div>
+    </section>
+    <!-- /Slider -->
 
-    </section><!-- /Slider Section -->
-
-    <!-- Trending Category Section -->
+    <!-- ─── À l'affiche / Trending ─── -->
     <section id="trending-category" class="trending-category section">
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="container" data-aos="fade-up">
           <div class="row g-5">
-            <div class="col-lg-4">
 
+            <!-- Featured film (large) -->
+            <div class="col-lg-4">
               <div class="post-entry lg">
                 <a href="blog-details.html"><img src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid"></a>
-                <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                <h2><a href="blog-details.html">11 Work From Home Part-Time Jobs You Can Do Now</a></h2>
-                <p class="mb-4 d-block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus exercitationem? Nihil tempore odit ab minus eveniet praesentium, similique blanditiis molestiae ut saepe perspiciatis officia nemo, eos quae cumque. Accusamus fugiat architecto rerum animi atque eveniet, quo, praesentium dignissimos</p>
-
+                <div class="post-meta">
+                  <span class="date">Drame</span> <span class="mx-1">•</span>
+                  <span>Sortie : 15 jan. 2025</span>
+                </div>
+                <div class="film-meta">
+                  <span class="stars">★★★★★</span>
+                  <span>|</span>
+                  <span>Réalisé par <strong>Pedro Almodóvar</strong></span>
+                </div>
+                <h2><a href="blog-details.html">La Chambre d'à Côté — Almodóvar touche à l'universel</a></h2>
+                <p class="mb-4 d-block">Dans ce film lumineux sur l'amitié et la mort, Tilda Swinton et Julianne Moore forment un duo inoubliable. Une méditation tendre et sans sentimentalisme sur le passage du temps.</p>
                 <div class="d-flex align-items-center author">
                   <div class="photo"><img src="assets/img/person-1.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                    <h3 class="m-0 p-0">Cameron Williamson</h3>
-                  </div>
+                  <div class="name"><h3 class="m-0 p-0">Marie Fontaine</h3></div>
                 </div>
               </div>
-
             </div>
 
+            <!-- Three columns of films -->
             <div class="col-lg-8">
               <div class="row g-5">
+
+                <!-- Col 1 -->
                 <div class="col-lg-4 border-start custom-border">
                   <div class="post-entry">
                     <a href="blog-details.html"><img src="assets/img/post-landscape-2.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Sport</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                    <h2><a href="blog-details.html">Let’s Get Back to Work, New York</a></h2>
+                    <div class="post-meta"><span class="date">Action</span> <span class="mx-1">•</span> <span>Avr. 2025</span></div>
+                    <div class="film-meta"><span class="stars">★★★★☆</span></div>
+                    <h2><a href="blog-details.html">Gladiateur II — Le Retour dans l'arène</a></h2>
                   </div>
                   <div class="post-entry">
                     <a href="blog-details.html"><img src="assets/img/post-landscape-5.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Food</span> <span class="mx-1">•</span> <span>Jul 17th '22</span></div>
-                    <h2><a href="blog-details.html">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
+                    <div class="post-meta"><span class="date">Sci-Fi</span> <span class="mx-1">•</span> <span>Fév. 2025</span></div>
+                    <div class="film-meta"><span class="stars">★★★☆☆</span></div>
+                    <h2><a href="blog-details.html">Alien : Romulus — La peur revient dans l'espace</a></h2>
                   </div>
                   <div class="post-entry">
                     <a href="blog-details.html"><img src="assets/img/post-landscape-7.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Design</span> <span class="mx-1">•</span> <span>Mar 15th '22</span></div>
-                    <h2><a href="blog-details.html">Why Craigslist Tampa Is One of The Most Interesting Places On the Web?</a></h2>
+                    <div class="post-meta"><span class="date">Thriller</span> <span class="mx-1">•</span> <span>Mar. 2025</span></div>
+                    <div class="film-meta"><span class="stars">★★★★☆</span></div>
+                    <h2><a href="blog-details.html">Conclave — Le Vatican sous tension avec Edward Berger</a></h2>
                   </div>
                 </div>
+
+                <!-- Col 2 -->
                 <div class="col-lg-4 border-start custom-border">
                   <div class="post-entry">
                     <a href="blog-details.html"><img src="assets/img/post-landscape-3.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                    <h2><a href="blog-details.html">6 Easy Steps To Create Your Own Cute Merch For Instagram</a></h2>
+                    <div class="post-meta"><span class="date">Comédie</span> <span class="mx-1">•</span> <span>Jan. 2025</span></div>
+                    <div class="film-meta"><span class="stars">★★★★☆</span></div>
+                    <h2><a href="blog-details.html">Emilia Pérez — Audiard conquiert Cannes en espagnol</a></h2>
                   </div>
                   <div class="post-entry">
                     <a href="blog-details.html"><img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Tech</span> <span class="mx-1">•</span> <span>Mar 1st '22</span></div>
-                    <h2><a href="blog-details.html">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
+                    <div class="post-meta"><span class="date">Animation</span> <span class="mx-1">•</span> <span>Déc. 2024</span></div>
+                    <div class="film-meta"><span class="stars">★★★★★</span></div>
+                    <h2><a href="blog-details.html">Flow — Le chef-d'œuvre animé letton qui émeut le monde</a></h2>
                   </div>
                   <div class="post-entry">
                     <a href="blog-details.html"><img src="assets/img/post-landscape-8.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Travel</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                    <h2><a href="blog-details.html">5 Great Startup Tips for Female Founders</a></h2>
+                    <div class="post-meta"><span class="date">Drame</span> <span class="mx-1">•</span> <span>Mars 2025</span></div>
+                    <div class="film-meta"><span class="stars">★★★☆☆</span></div>
+                    <h2><a href="blog-details.html">A Complete Unknown — Bob Dylan selon Mangold</a></h2>
                   </div>
                 </div>
 
-                <!-- Trending Section -->
+                <!-- Trending sidebar -->
                 <div class="col-lg-4">
-
                   <div class="trending">
-                    <h3>Trending</h3>
+                    <h3>Tendances</h3>
                     <ul class="trending-post">
                       <li>
                         <a href="blog-details.html">
                           <span class="number">1</span>
-                          <h3>The Best Homemade Masks for Face (keep the Pimples Away)</h3>
-                          <span class="author">Jane Cooper</span>
+                          <h3>Dune : Deuxième Partie — L'épopée s'achève en beauté</h3>
+                          <span class="author">Marie Fontaine</span>
                         </a>
                       </li>
                       <li>
                         <a href="blog-details.html">
                           <span class="number">2</span>
-                          <h3>17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</h3>
-                          <span class="author">Wade Warren</span>
+                          <h3>Oppenheimer — 13 minutes de silence dans la salle</h3>
+                          <span class="author">Pierre Leconte</span>
                         </a>
                       </li>
                       <li>
                         <a href="blog-details.html">
                           <span class="number">3</span>
-                          <h3>13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h3>
-                          <span class="author">Esther Howard</span>
+                          <h3>Flow — L'animation sans dialogue qui brise toutes les frontières</h3>
+                          <span class="author">Sofia Marino</span>
                         </a>
                       </li>
                       <li>
                         <a href="blog-details.html">
                           <span class="number">4</span>
-                          <h3>9 Half-up/half-down Hairstyles for Long and Medium Hair</h3>
-                          <span class="author">Cameron Williamson</span>
+                          <h3>Emilia Pérez — Audiard réinvente le film de cartel</h3>
+                          <span class="author">Jean-Luc Moreau</span>
                         </a>
                       </li>
                       <li>
                         <a href="blog-details.html">
                           <span class="number">5</span>
-                          <h3>Life Insurance And Pregnancy: A Working Mom’s Guide</h3>
-                          <span class="author">Jenny Wilson</span>
+                          <h3>Conclave — Le suspense jusqu'à la dernière fumée blanche</h3>
+                          <span class="author">Clara Dubois</span>
                         </a>
                       </li>
                     </ul>
                   </div>
+                </div>
 
-                </div> <!-- End Trending Section -->
               </div>
             </div>
-
-          </div> <!-- End .row -->
+          </div>
         </div>
-
       </div>
+    </section>
+    <!-- /Trending -->
 
-    </section><!-- /Trending Category Section -->
-
-    <!-- Culture Category Section -->
+    <!-- ─── Critiques ─── -->
     <section id="culture-category" class="culture-category section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <div class="section-title-container d-flex align-items-center justify-content-between">
-          <h2>Culture</h2>
-          <p><a href="categories.html">See All Culture</a></p>
+          <h2>Critiques</h2>
+          <p><a href="categories.html">Toutes les critiques</a></p>
         </div>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row">
           <div class="col-md-9">
 
@@ -285,14 +363,14 @@
                 <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
               </a>
               <div>
-                <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                <h3><a href="blog-details.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas, nobis error deserunt aliquam temporibus sapiente, laudantium dolorum itaque libero eos deleniti?</p>
+                <div class="post-meta"><span class="date">Drame</span> <span class="mx-1">•</span> <span>12 juin 2025</span></div>
+                <div class="film-meta"><span class="stars">★★★★★</span> <span class="in-theaters">En salle</span></div>
+                <div class="director-line">De <span>Coralie Fargeat</span> — avec Demi Moore, Margaret Qualley</div>
+                <h3><a href="blog-details.html">The Substance — Body Horror féministe d'une puissance rare</a></h3>
+                <p>Coralie Fargeat dynamite les codes du genre avec une frénésie visuelle et une intelligence de propos qui sidèrent. Demi Moore offre sa plus grande performance depuis des décennies dans ce film qui vous hantera.</p>
                 <div class="d-flex align-items-center author">
                   <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
+                  <div class="name"><h3 class="m-0 p-0">Clara Dubois</h3></div>
                 </div>
               </div>
             </div>
@@ -301,25 +379,28 @@
               <div class="col-lg-4">
                 <div class="post-list border-bottom">
                   <a href="blog-details.html"><img src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">11 Work From Home Part-Time Jobs You Can Do Now</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
-                  <p class="mb-4 d-block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus</p>
+                  <div class="post-meta"><span class="date">Thriller</span> <span class="mx-1">•</span> <span>5 juin 2025</span></div>
+                  <div class="film-meta"><span class="stars">★★★★☆</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Longlegs — Nicolas Cage en serial killer hors-norme</a></h2>
+                  <span class="author mb-3 d-block">Pierre Leconte</span>
+                  <p class="mb-4 d-block">Osgood Perkins signe un thriller occultiste qui joue sur la suggestion et l'atmosphère bien plus que sur le choc visuel.</p>
                 </div>
-
                 <div class="post-list">
-                  <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">5 Great Startup Tips for Female Founders</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                  <div class="post-meta"><span class="date">Action</span> <span class="mx-1">•</span> <span>2 juin 2025</span></div>
+                  <div class="film-meta"><span class="stars">★★★☆☆</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Furiosa — L'origine d'une icône de la route</a></h2>
+                  <span class="author mb-3 d-block">Jean-Luc Moreau</span>
                 </div>
               </div>
               <div class="col-lg-8">
                 <div class="post-list">
                   <a href="blog-details.html"><img src="assets/img/post-landscape-2.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
-                  <p class="mb-4 d-block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus</p>
+                  <div class="post-meta"><span class="date">Science-Fiction</span> <span class="mx-1">•</span> <span>1 juin 2025</span></div>
+                  <div class="film-meta"><span class="stars">★★★★☆</span></div>
+                  <div class="director-line">De <span>Alex Garland</span> — avec Jessie Buckley</div>
+                  <h2 class="mb-2"><a href="blog-details.html">Civil War — Garland frappe fort avec son regard d'acier sur l'Amérique</a></h2>
+                  <span class="author mb-3 d-block">Sofia Marino</span>
+                  <p class="mb-4 d-block">Un film de guerre sans camp ni héros, uniquement des témoins. La photographie de Rob Hardy est à couper le souffle.</p>
                 </div>
               </div>
             </div>
@@ -327,60 +408,57 @@
 
           <div class="col-md-3">
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Animation</span> <span class="mx-1">•</span> <span>28 mai 2025</span></div>
+              <div class="film-meta"><span class="stars">★★★★★</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Inside Out 2 — Pixar retrouve sa magie émotionnelle</a></h2>
+              <span class="author mb-3 d-block">Marie Fontaine</span>
             </div>
-
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Drame</span> <span class="mx-1">•</span> <span>22 mai 2025</span></div>
+              <div class="film-meta"><span class="stars">★★★★☆</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">All of Us Strangers — Haigh filme le deuil avec une douceur bouleversante</a></h2>
+              <span class="author mb-3 d-block">Clara Dubois</span>
             </div>
-
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Comédie</span> <span class="mx-1">•</span> <span>18 mai 2025</span></div>
+              <div class="film-meta"><span class="stars">★★★☆☆</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Challengers — Guadagnino sert un triangle amoureux électrique</a></h2>
+              <span class="author mb-3 d-block">Pierre Leconte</span>
             </div>
-
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">Life Insurance And Pregnancy: A Working Mom’s Guide</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Thriller</span> <span class="mx-1">•</span> <span>12 mai 2025</span></div>
+              <div class="film-meta"><span class="stars">★★★★☆</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Hit Man — Linklater joue avec les identités avec malice</a></h2>
+              <span class="author mb-3 d-block">Jean-Luc Moreau</span>
             </div>
-
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Sci-Fi</span> <span class="mx-1">•</span> <span>8 mai 2025</span></div>
+              <div class="film-meta"><span class="stars">★★★★★</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Poor Things — Lanthimos réinvente Frankenstein en conte féministe</a></h2>
+              <span class="author mb-3 d-block">Sofia Marino</span>
             </div>
-
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Action</span> <span class="mx-1">•</span> <span>5 mai 2025</span></div>
+              <div class="film-meta"><span class="stars">★★★☆☆</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Deadpool & Wolverine — Le duo Marvel tient toutes ses promesses</a></h2>
+              <span class="author mb-3 d-block">Pierre Leconte</span>
             </div>
           </div>
         </div>
-
       </div>
+    </section>
+    <!-- /Critiques -->
 
-    </section><!-- /Culture Category Section -->
-
-    <!-- Business Category Section -->
+    <!-- ─── Réalisateurs à suivre ─── -->
     <section id="business-category" class="business-category section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <div class="section-title-container d-flex align-items-center justify-content-between">
-          <h2>Business</h2>
-          <p><a href="categories.html">See All Business</a></p>
+          <h2>Réalisateurs à suivre</h2>
+          <p><a href="categories.html">Tous les cinéastes</a></p>
         </div>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row">
           <div class="col-md-9 order-md-2">
 
@@ -389,14 +467,12 @@
                 <img src="assets/img/post-landscape-3.jpg" alt="" class="img-fluid">
               </a>
               <div>
-                <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                <h3><a href="blog-details.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas, nobis error deserunt aliquam temporibus sapiente, laudantium dolorum itaque libero eos deleniti?</p>
+                <div class="post-meta"><span class="date">Portrait</span> <span class="mx-1">•</span> <span>10 juin 2025</span></div>
+                <h3><a href="blog-details.html">Denis Villeneuve — Quand le cinéma de science-fiction redevient littérature</a></h3>
+                <p>De Incendies à Dune, le Québécois a redéfini ce que la grande épopée cinématographique peut être. Rencontre avec un perfectionniste qui ne tourne que s'il a quelque chose à dire.</p>
                 <div class="d-flex align-items-center author">
                   <div class="photo"><img src="assets/img/person-4.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
+                  <div class="name"><h3 class="m-0 p-0">Jean-Luc Moreau</h3></div>
                 </div>
               </div>
             </div>
@@ -405,113 +481,100 @@
               <div class="col-lg-4">
                 <div class="post-list border-bottom">
                   <a href="blog-details.html"><img src="assets/img/post-landscape-5.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">11 Work From Home Part-Time Jobs You Can Do Now</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
-                  <p class="mb-4 d-block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus</p>
+                  <div class="post-meta"><span class="date">Portrait</span> <span class="mx-1">•</span> <span>8 juin 2025</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Coralie Fargeat — La révolutionnaire du body horror</a></h2>
+                  <span class="author mb-3 d-block">Clara Dubois</span>
+                  <p class="mb-4 d-block">Révélée par Revenge, confirmée par The Substance. La Française impose sa vision sans compromis.</p>
                 </div>
-
                 <div class="post-list">
-                  <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">5 Great Startup Tips for Female Founders</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                  <div class="post-meta"><span class="date">Portrait</span> <span class="mx-1">•</span> <span>5 juin 2025</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Yorgos Lanthimos — L'absurde comme outil de vérité</a></h2>
+                  <span class="author mb-3 d-block">Sofia Marino</span>
                 </div>
               </div>
               <div class="col-lg-8">
                 <div class="post-list">
                   <a href="blog-details.html"><img src="assets/img/post-landscape-7.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
-                  <p class="mb-4 d-block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus</p>
+                  <div class="post-meta"><span class="date">Analyse</span> <span class="mx-1">•</span> <span>2 juin 2025</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Christopher Nolan — L'architecte du temps qui a sauvé le cinéma en salles</a></h2>
+                  <span class="author mb-3 d-block">Pierre Leconte</span>
+                  <p class="mb-4 d-block">D'Interstellar à Oppenheimer, Nolan prouve qu'il est possible de faire des films ambitieux et populaires à la fois. Portrait d'un paradoxe cinématographique.</p>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="col-md-3">
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Portrait</span> <span class="mx-1">•</span> <span>1 juin 2025</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Justine Triet — La Palme d'Or qui réveille le cinéma français</a></h2>
+              <span class="author mb-3 d-block">Marie Fontaine</span>
             </div>
-
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Portrait</span> <span class="mx-1">•</span> <span>28 mai 2025</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Luca Guadagnino — Le cinéaste du désir et de la sensation</a></h2>
+              <span class="author mb-3 d-block">Sofia Marino</span>
             </div>
-
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Portrait</span> <span class="mx-1">•</span> <span>22 mai 2025</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Gints Zilbalodis — L'homme orchestre derrière Flow</a></h2>
+              <span class="author mb-3 d-block">Jean-Luc Moreau</span>
             </div>
-
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">Life Insurance And Pregnancy: A Working Mom’s Guide</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Portrait</span> <span class="mx-1">•</span> <span>18 mai 2025</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Alex Garland — Prophète d'un cinéma de genre exigeant</a></h2>
+              <span class="author mb-3 d-block">Clara Dubois</span>
             </div>
-
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Portrait</span> <span class="mx-1">•</span> <span>15 mai 2025</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Pedro Almodóvar — 45 ans de cinéma, une œuvre immortelle</a></h2>
+              <span class="author mb-3 d-block">Marie Fontaine</span>
             </div>
-
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Portrait</span> <span class="mx-1">•</span> <span>10 mai 2025</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Hayao Miyazaki — Le vieux maître refuse de s'arrêter</a></h2>
+              <span class="author mb-3 d-block">Pierre Leconte</span>
             </div>
           </div>
         </div>
-
       </div>
+    </section>
+    <!-- /Réalisateurs -->
 
-    </section><!-- /Business Category Section -->
-
-    <!-- Lifestyle Category Section -->
+    <!-- ─── Événements & Festivals ─── -->
     <section id="lifestyle-category" class="lifestyle-category section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <div class="section-title-container d-flex align-items-center justify-content-between">
-          <h2>Lifestyle</h2>
-          <p><a href="categories.html">See All Lifestyle</a></p>
+          <h2>Festivals & Événements</h2>
+          <p><a href="categories.html">Tout l'agenda</a></p>
         </div>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row g-5">
           <div class="col-lg-4">
             <div class="post-list lg">
               <a href="blog-details.html"><img src="assets/img/post-landscape-8.jpg" alt="" class="img-fluid"></a>
-              <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2><a href="blog-details.html">11 Work From Home Part-Time Jobs You Can Do Now</a></h2>
-              <p class="mb-4 d-block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus exercitationem? Nihil tempore odit ab minus eveniet praesentium, similique blanditiis molestiae ut saepe perspiciatis officia nemo, eos quae cumque. Accusamus fugiat architecto rerum animi atque eveniet, quo, praesentium dignissimos</p>
-
+              <div class="post-meta"><span class="date">Festival</span> <span class="mx-1">•</span> <span>14–25 mai 2025</span></div>
+              <h2><a href="blog-details.html">Cannes 2025 — Palmarès, coups de cœur et polémiques</a></h2>
+              <p class="mb-4 d-block">La 78e édition du Festival de Cannes a couronné des films audacieux et polarisants. Notre bilan complet : les œuvres incontournables, les absences qui ont fait débat, et les révélations venues de toute la planète cinéma.</p>
               <div class="d-flex align-items-center author">
                 <div class="photo"><img src="assets/img/person-7.jpg" alt="" class="img-fluid"></div>
-                <div class="name">
-                  <h3 class="m-0 p-0">Esther Howard</h3>
-                </div>
+                <div class="name"><h3 class="m-0 p-0">Sofia Marino</h3></div>
               </div>
             </div>
 
             <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Cérémonie</span> <span class="mx-1">•</span> <span>Fév. 2025</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Oscars 2025 — Oppenheimer rafle tout, surprises et oublis</a></h2>
+              <span class="author mb-3 d-block">Marie Fontaine</span>
             </div>
 
             <div class="post-list">
-              <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <div class="post-meta"><span class="date">Festival</span> <span class="mx-1">•</span> <span>Sept. 2025</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Venise — Les films les plus attendus de la Mostra</a></h2>
+              <span class="author mb-3 d-block">Jean-Luc Moreau</span>
             </div>
-
           </div>
 
           <div class="col-lg-8">
@@ -519,150 +582,140 @@
               <div class="col-lg-4 border-start custom-border">
                 <div class="post-list">
                   <a href="blog-details.html"><img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2><a href="blog-details.html">Let’s Get Back to Work, New York</a></h2>
+                  <div class="post-meta"><span class="date">Festival</span> <span class="mx-1">•</span> <span>Oct. 2025</span></div>
+                  <h2><a href="blog-details.html">TIFF 2025 — Toronto lance la saison des Oscars</a></h2>
                 </div>
                 <div class="post-list">
                   <a href="blog-details.html"><img src="assets/img/post-landscape-5.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 17th '22</span></div>
-                  <h2><a href="blog-details.html">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
+                  <div class="post-meta"><span class="date">Rétrospective</span> <span class="mx-1">•</span> <span>Ciné-Club</span></div>
+                  <h2><a href="blog-details.html">Kubrick en 4K — Une restauration qui stupéfie</a></h2>
                 </div>
                 <div class="post-list">
                   <a href="blog-details.html"><img src="assets/img/post-landscape-4.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Mar 15th '22</span></div>
-                  <h2><a href="blog-details.html">Why Craigslist Tampa Is One of The Most Interesting Places On the Web?</a></h2>
+                  <div class="post-meta"><span class="date">Avant-première</span> <span class="mx-1">•</span> <span>Juil. 2025</span></div>
+                  <h2><a href="blog-details.html">Mission Impossible 8 — On était à la première mondiale</a></h2>
                 </div>
               </div>
               <div class="col-lg-4 border-start custom-border">
                 <div class="post-list">
                   <a href="blog-details.html"><img src="assets/img/post-landscape-3.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2><a href="blog-details.html">6 Easy Steps To Create Your Own Cute Merch For Instagram</a></h2>
+                  <div class="post-meta"><span class="date">Hommage</span> <span class="mx-1">•</span> <span>Juin 2025</span></div>
+                  <h2><a href="blog-details.html">Roger Corman — Le père du cinéma de genre américain nous a quittés</a></h2>
                 </div>
                 <div class="post-list">
                   <a href="blog-details.html"><img src="assets/img/post-landscape-2.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Mar 1st '22</span></div>
-                  <h2><a href="blog-details.html">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
+                  <div class="post-meta"><span class="date">Dossier</span> <span class="mx-1">•</span> <span>Mai 2025</span></div>
+                  <h2><a href="blog-details.html">Streaming vs Salles — La bataille qui redéfinit Hollywood</a></h2>
                 </div>
                 <div class="post-list">
                   <a href="blog-details.html"><img src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2><a href="blog-details.html">5 Great Startup Tips for Female Founders</a></h2>
+                  <div class="post-meta"><span class="date">Interview</span> <span class="mx-1">•</span> <span>Avr. 2025</span></div>
+                  <h2><a href="blog-details.html">Cillian Murphy — « Jouer Oppenheimer m'a changé »</a></h2>
                 </div>
               </div>
               <div class="col-lg-4">
-
                 <div class="post-list border-bottom">
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                  <div class="post-meta"><span class="date">Sortie DVD</span> <span class="mx-1">•</span> <span>Juil. 2025</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Les sorties Blu-ray à ne pas manquer ce mois-ci</a></h2>
+                  <span class="author mb-3 d-block">Pierre Leconte</span>
                 </div>
-
                 <div class="post-list border-bottom">
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                  <div class="post-meta"><span class="date">Dossier</span> <span class="mx-1">•</span> <span>Juin 2025</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">L'IA au cinéma : révolution ou menace pour les créateurs ?</a></h2>
+                  <span class="author mb-3 d-block">Marie Fontaine</span>
                 </div>
-
                 <div class="post-list border-bottom">
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                  <div class="post-meta"><span class="date">Guide</span> <span class="mx-1">•</span> <span>Juin 2025</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Netflix, Disney+, MUBI — Que regarder ce weekend ?</a></h2>
+                  <span class="author mb-3 d-block">Sofia Marino</span>
                 </div>
-
                 <div class="post-list border-bottom">
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">Life Insurance And Pregnancy: A Working Mom’s Guide</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                  <div class="post-meta"><span class="date">Palmarès</span> <span class="mx-1">•</span> <span>Mai 2025</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">César 2025 — Anatomie d'une Chute triomphe</a></h2>
+                  <span class="author mb-3 d-block">Clara Dubois</span>
                 </div>
-
                 <div class="post-list border-bottom">
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                  <div class="post-meta"><span class="date">Annonce</span> <span class="mx-1">•</span> <span>Mai 2025</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Avengers : Doomsday — Tout ce qu'on sait sur le retour de Downey Jr.</a></h2>
+                  <span class="author mb-3 d-block">Jean-Luc Moreau</span>
                 </div>
-
                 <div class="post-list border-bottom">
-                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                  <div class="post-meta"><span class="date">Top 10</span> <span class="mx-1">•</span> <span>Avr. 2025</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Les 10 meilleurs films de 2024 selon la rédaction MG Film</a></h2>
+                  <span class="author mb-3 d-block">La Rédaction</span>
                 </div>
-
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
-
-    </section><!-- /Lifestyle Category Section -->
+    </section>
+    <!-- /Festivals -->
 
   </main>
 
   <footer id="footer" class="footer dark-background">
-
     <div class="container footer-top">
       <div class="row gy-4">
+
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">MG Film</span>
+            <span class="sitename">MG<span style="color:var(--film-gold)">Film</span></span>
           </a>
           <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
+            <p>Magazine de cinéma indépendant</p>
+            <p>Paris, France</p>
+            <p class="mt-3"><strong>Email :</strong> <span>contact@mgfilm.fr</span></p>
           </div>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
             <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href=""><i class="bi bi-youtube"></i></a>
           </div>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
+          <h4>Navigation</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Critiques</a></li>
+            <li><a href="#">Festivals</a></li>
+            <li><a href="#">Réalisateurs</a></li>
+            <li><a href="#">À propos</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
+          <h4>Genres</h4>
           <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Drame</a></li>
+            <li><a href="#">Science-Fiction</a></li>
+            <li><a href="#">Thriller</a></li>
+            <li><a href="#">Animation</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Hic solutasetp</h4>
+          <h4>Plateformes</h4>
           <ul>
-            <li><a href="#">Molestiae accusamus iure</a></li>
-            <li><a href="#">Excepturi dignissimos</a></li>
-            <li><a href="#">Suscipit distinctio</a></li>
-            <li><a href="#">Dilecta</a></li>
-            <li><a href="#">Sit quas consectetur</a></li>
+            <li><a href="#">Netflix</a></li>
+            <li><a href="#">Disney+</a></li>
+            <li><a href="#">MUBI</a></li>
+            <li><a href="#">Amazon Prime</a></li>
+            <li><a href="#">Apple TV+</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Nobis illum</h4>
+          <h4>La Rédaction</h4>
           <ul>
-            <li><a href="#">Ipsam</a></li>
-            <li><a href="#">Laudantium dolorum</a></li>
-            <li><a href="#">Dinera</a></li>
-            <li><a href="#">Trodelas</a></li>
-            <li><a href="#">Flexo</a></li>
+            <li><a href="#">Marie Fontaine</a></li>
+            <li><a href="#">Pierre Leconte</a></li>
+            <li><a href="#">Sofia Marino</a></li>
+            <li><a href="#">Clara Dubois</a></li>
+            <li><a href="#">Jean-Luc Moreau</a></li>
           </ul>
         </div>
 
@@ -670,16 +723,11 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">MG Film</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">MG Film</strong> <span>Tous droits réservés</span></p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href=“https://themewagon.com>ThemeWagon
+        Designé par <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
@@ -698,5 +746,4 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>
