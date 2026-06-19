@@ -43,217 +43,223 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang='fr'>
+<html lang="fr">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Mada Film - Vos Films</title>
-    <link rel='stylesheet' href='../assets/css/main.css'> 
-    <style>
-        :root {
-            --font-serif: "EB Garamond", serif;
-            --font-sans: "Inter", sans-serif;
-            --bg-color: #ffffff;
-            --text-color: #212529;
-            --accent-color: #465367;
-            --muted-color: #64748b;
-            --card-bg: #f8fafc;
-            --border-color: #e2e8f0;
-        }
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>MG Film — Cinéma & Critiques</title>
+  <meta name="description" content="Actualités cinéma, critiques de films, analyses et tendances du 7ème art">
+  <meta name="keywords" content="cinéma, films, critiques, sorties, acteurs, réalisateurs">
+  <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+  <!-- Main CSS File -->
+  <link href="../assets/css/main.css" rel="stylesheet">
 
-        body {
-            font-family: var(--font-serif);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    /* ─── Film-themed overrides ─── */
+    :root {
+      --film-gold: #e8b94f;
+      --film-dark: #0d0d0d;
+      --film-red:  #c0392b;
+    }
 
-        /* Header Style */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            border-bottom: 1px solid var(--border-color);
-            background-color: #fff;
-        }
+    /* Star rating helper */
+    .stars { color: var(--film-gold); font-size: .85rem; letter-spacing: 1px; }
 
-        header h1 {
-            font-size: 1.8rem;
-            color: var(--accent-color);
-            margin: 0;
-        }
+    /* Badge pill for genre/category */
+    .genre-pill {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .genre-pill.action   { background: #c0392b22; color: #c0392b; }
+    .genre-pill.drama    { background: #2980b922; color: #2980b9; }
+    .genre-pill.sci-fi   { background: #8e44ad22; color: #8e44ad; }
+    .genre-pill.thriller { background: #e67e2222; color: #e67e22; }
+    .genre-pill.comedy   { background: #27ae6022; color: #27ae60; }
+    .genre-pill.animation{ background: #16a08522; color: #16a085; }
 
-        .user-nav {
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+    /* Slider overlay tweak — make text pop on film stills */
+    .slider .swiper-slide .content {
+      background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.25) 70%, transparent 100%);
+    }
+    .slider .swiper-slide .content .meta-row {
+      display: flex; align-items: center; gap: .6rem;
+      margin-bottom: .4rem; font-size: .8rem; color: #bbb;
+    }
+    .slider .swiper-slide .content .stars { font-size: 1rem; }
 
-        .user-nav span {
-            font-weight: 500;
-        }
+    /* Post entry mini-meta */
+    .film-meta {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .75rem; color: #888; margin-bottom: .3rem;
+    }
+    .film-meta .stars { font-size: .75rem; }
 
-        .btn-logout {
-            color: #ef4444;
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-        .btn-logout:hover { opacity: 0.8; }
+    /* "En salle" badge */
+    .in-theaters {
+      display: inline-block;
+      background: var(--film-red);
+      color: #fff;
+      font-size: .65rem; font-weight: 700;
+      padding: 1px 7px; border-radius: 3px;
+      text-transform: uppercase; letter-spacing: .07em;
+    }
 
-        /* Main Content */
-        main {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+    /* Trending list tweak */
+    .trending .trending-post li a h3 { font-size: .88rem; }
 
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-            color: #334155;
-        }
+    /* Director credit line */
+    .director-line { font-size: .8rem; color: #777; margin-bottom: .3rem; }
+    .director-line span { color: #444; font-weight: 600; }
 
-        .section-subtitle {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            color: var(--muted-color);
-            margin-bottom: 30px;
-        }
-
-        /* Grille des Films */
-        .movies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .movie-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .movie-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .movie-img-wrapper {
-            width: 100%;
-            height: 350px;
-            background-color: #cbd5e1;
-            overflow: hidden;
-        }
-
-        .movie-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .movie-info {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .movie-title {
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-            color: #1e293b;
-            line-height: 1.2;
-        }
-
-        .movie-meta {
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            color: var(--muted-color);
-            margin-bottom: 12px;
-        }
-
-        .movie-desc {
-            font-size: 0.95rem;
-            color: #475569;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-            border-top: 1px solid var(--border-color);
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            color: var(--muted-color);
-        }
-    </style>
+    /* Section accent bar */
+    .section-title h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: var(--film-gold);
+      margin-top: 6px;
+    }
+  </style>
 </head>
-<body>
 
-    <header>
-        <h1>Mada film</h1>
-        <div class='user-nav'>
-            <span>Bonjour, <strong><?= htmlspecialchars($name_user) ?></strong></span>
-            <a href="genres.php" style="color: var(--accent-color); text-decoration: none;">Ajuster mes goûts</a>
-            <a href="deconnexion.php" class="btn-logout">Se déconnecter</a>
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">MG<span style="color:var(--film-gold)">Film</span></h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" class="active">Accueil</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="single-post.html">Critique</a></li>
+          <li class="dropdown"><a href="#"><span>Genres</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="category.html">Action & Aventure</a></li>
+              <li><a href="category.html">Drame</a></li>
+              <li><a href="category.html">Science-Fiction</a></li>
+              <li><a href="category.html">Comédie</a></li>
+              <li class="dropdown"><a href="#"><span>Plus de genres</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Thriller</a></li>
+                  <li><a href="#">Animation</a></li>
+                  <li><a href="#">Horreur</a></li>
+                  <li><a href="#">Documentaire</a></li>
+                  <li><a href="#">Romance</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- espace de films -->
+   <section>
+    
+
+   </section>
+   <section>
+    
+   </section>
+   <section>
+    
+   </section>   
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container footer-top">
+      <div class="row gy-4">
+
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">MG<span style="color:var(--film-gold)">Film</span></span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>Magazine de cinéma indépendant</p>
+            <p>Paris, France</p>
+            <p class="mt-3"><strong>Email :</strong> <span>contact@mgfilm.fr</span></p>
+          </div>
+          <!--  -->
         </div>
-    </header>
 
-    <main>
-        <?php if ($is_personalized): ?>
-            <h2 class='section-title'>Inspiré par vos goûts</h2>
-            <p class='section-subtitle'>Voici les films correspondant aux genres que vous avez sélectionnés.</p>
-        <?php else: ?>
-            <h2 class='section-title'>Découvrir des films</h2>
-            <p class='section-subtitle'>Voici les dernières nouveautés disponibles sur Mada film.</p>
-        <?php endif; ?>
-
-        <div class='movies-grid'>
-            <?php if (!empty($films)): ?>
-                <?php foreach ($films as $film): ?>
-                    <div class='movie-card'>
-                        <div class='movie-img-wrapper'>
-                            <?php if (!empty($film['img'])): ?>
-                                <img src='../assets/img/<?= htmlspecialchars($film['img']) ?>' alt='Affiche de <?= htmlspecialchars($film['title_film']) ?>'>
-                            <?php else: ?>
-                                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #94a3b8; font-family: var(--font-sans);">Pas d'affiche</div>
-                            <?php endif; ?>
-                        </div>
-                        <div class='movie-info'>
-                            <h3 class='movie-title'><?= htmlspecialchars($film['title_film']) ?></h3>
-                            <div class='movie-meta'>
-                                <?= htmlspecialchars($film['name_realisateur']) ?> &bull; <?= htmlspecialchars($film['film_year']) ?>
-                            </div>
-                            <p class='movie-desc'><?= htmlspecialchars($film['description']) ?></p>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p style="grid-column: 1/-1; text-align: center; color: var(--muted-color); font-family: var(--font-sans); padding: 40px 0;">
-                    Aucun film n'est disponible pour le moment.
-                </p>
-            <?php endif; ?>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Critiques</a></li>
+            <li><a href="#">Festivals</a></li>
+            <li><a href="#">Réalisateurs</a></li>
+            <li><a href="#">À propos</a></li>
+          </ul>
         </div>
-    </main>
 
-    <footer>
-        &copy; <?= date('Y') ?> Mada film - Tous droits réservés.
-    </footer>
+        <!-- <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Genres</h4>
+          <ul>
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Drame</a></li>
+            <li><a href="#">Science-Fiction</a></li>
+            <li><a href="#">Thriller</a></li>
+            <li><a href="#">Animation</a></li>
+          </ul>
+        </div> -->
+
+        <!-- <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Plateformes</h4>
+          <ul>
+            <li><a href="#">Netflix</a></li>
+            <li><a href="#">Disney+</a></li>
+            <li><a href="#">MUBI</a></li>
+            <li><a href="#">Amazon Prime</a></li>
+            <li><a href="#">Apple TV+</a></li>
+          </ul>
+        </div> -->
+
+        <!-- <div class="col-lg-2 col-md-3 footer-links">
+          <h4>La Rédaction</h4>
+          <ul>
+            <li><a href="#">Marie Fontaine</a></li>
+            <li><a href="#">Pierre Leconte</a></li>
+            <li><a href="#">Sofia Marino</a></li>
+            <li><a href="#">Clara Dubois</a></li>
+            <li><a href="#">Jean-Luc Moreau</a></li>
+          </ul>
+        </div> -->
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">MG Film</strong> <span>Tous droits réservés</span></p>
+      
+    </div>
+  </footer>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
 
 </body>
 </html>

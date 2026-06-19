@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action']) && $_POST['
                 $_SESSION['user_role'] = $user['role'];
 
                 // Redirection vers l'accueil ou le tableau de bord
-                header('Location: ../index.php');
+                header('Location: film_page.view.php');
                 exit();
             } else {
                 $erreurs[] = "Identifiants incorrects.";
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action']) && $_POST['
             error_log("Erreur connexion: " . $e->getMessage());
         }
     }
-    header("Location: film_page.view.php");
+    
 }
 ?>
 <!DOCTYPE html>
