@@ -80,6 +80,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action']) && $_POST['
         $message .= "</ul></div>";
         $messageType = 'signup';
     }
+    // ... (Requête d'insertion SQL inchangée)
+    $stmt->execute([$name_user, $email, $hash]);
+
+    // 1. Récupérer l'id de l'utilisateur fraîchement créé
+    $id_user = $pdo->lastInsertId();
+
+    // 2. Connecter l'utilisateur en session
+    $_SESSION['id_user']   = $id_user;
+    $_SESSION['name_user'] = $name_user;
+    $_SESSION['role']      = 'client';
+    
+    // 3. Redirection directe vers la page des genres
+    header("Location: genres.php");
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -88,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action']) && $_POST['
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription | Mada film</title>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
     
     <style>
         :root {
