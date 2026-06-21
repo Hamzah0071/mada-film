@@ -17,6 +17,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Rediriger vers la page de connexion avec un message de confirmation
-header("Location: login.php?logout=1");
+header("Location: views/connexion.view.php");
 exit;
 ?>

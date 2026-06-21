@@ -1,0 +1,29 @@
+:root {
+    /* Couleurs principales */
+    --primary-color: #e8b94f; /* Film Gold */
+    --primary-hover: #d4a73d;
+    --secondary-color: #1a1a1a;
+    --bg-dark: #0d0d0d;
+    --bg-light: #f4f4f4;
+    --text-main: #333333;
+    --text-muted: #777777;
+    --text-light: #ffffff;
+    --danger: #c0392b;
+    --success: #27ae60;
+
+    /* Typographie */
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-heading: 'EB Garamond', serif;
+
+    /* Espacement */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Bordures & Ombres */
+    --border-radius: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}

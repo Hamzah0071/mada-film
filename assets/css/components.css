@@ -1,0 +1,111 @@
+/* Header */
+.main-header {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    padding: var(--spacing-md) 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.main-header .logo h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    color: var(--text-light);
+}
+
+.main-header .logo span {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    background-color: var(--primary-color);
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Film Cards */
+.film-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg) 0;
+}
+
+.film-card {
+    background: #fff;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+}
+
+.film-card:hover {
+    transform: translateY(-5px);
+}
+
+.film-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.film-content {
+    padding: var(--spacing-md);
+}
+
+.film-title {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.film-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-sm);
+}
+
+.stars {
+    color: var(--primary-color);
+}
+
+.genre-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #eee;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    margin-right: 5px;
+}
+
+/* Footer */
+.main-footer {
+    background: var(--secondary-color);
+    color: var(--text-light);
+    padding: var(--spacing-xl) 0;
+    margin-top: var(--spacing-xl);
+    text-align: center;
+}
