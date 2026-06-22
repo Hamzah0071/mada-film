@@ -1,0 +1,321 @@
+/* ============================================================
+   film.detail.css — Page de détail film, MG-Film
+   ============================================================ */
+
+/* ── Variables locales ───────────────────────────────────── */
+:root {
+    --detail-gold:   #E8B84B;
+    --detail-gold2:  #c99a30;
+    --detail-bg:     #0D0D0F;
+    --detail-card:   #161618;
+    --detail-border: rgba(255,255,255,0.08);
+    --detail-text:   #F0EDE8;
+    --detail-muted:  #9A9490;
+}
+
+body.detail-page {
+    background: var(--detail-bg);
+    color: var(--detail-text);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ── HERO ────────────────────────────────────────────────── */
+.detail-hero {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+/* Fond flouté */
+.detail-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+.detail-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(18px) brightness(0.35) saturate(0.7);
+    transform: scale(1.08);
+}
+.detail-hero-bg-fallback {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0d0d0f 100%);
+}
+.detail-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(13,13,15,1)   0%,
+        rgba(13,13,15,0.7) 50%,
+        rgba(13,13,15,0.2) 100%
+    );
+}
+
+/* Contenu hero */
+.detail-hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 40px;
+    align-items: flex-end;
+    padding-top: 80px;
+    padding-bottom: 48px;
+    width: 100%;
+}
+
+/* Affiche */
+.detail-poster {
+    flex-shrink: 0;
+    width: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    border: 1px solid var(--detail-border);
+}
+.detail-poster img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.detail-poster-fallback {
+    width: 200px;
+    height: 300px;
+    background: var(--detail-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--detail-muted);
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Infos principales */
+.detail-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.detail-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+/* Réutilise les genre-badge de mgfilm.css si déjà définis,
+   sinon fallback ci-dessous */
+.genre-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: rgba(232,184,75,0.15);
+    color: var(--detail-gold);
+    border: 1px solid rgba(232,184,75,0.3);
+}
+
+.detail-title {
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    color: #fff;
+}
+
+.detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--detail-muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+.detail-sep { opacity: 0.4; }
+.detail-realisateur {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.detail-year {
+    font-weight: 700;
+    color: var(--detail-text);
+}
+
+/* Note moyenne */
+.detail-avg-rating {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.avg-stars {
+    display: flex;
+    gap: 2px;
+}
+.avg-star {
+    font-size: 18px;
+    color: var(--detail-border);
+    transition: color 0.15s;
+}
+.avg-star.filled { color: var(--detail-gold); }
+
+.avg-score {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--detail-gold);
+    line-height: 1;
+}
+.avg-max {
+    font-size: 14px;
+    color: var(--detail-muted);
+    font-weight: 400;
+}
+.avg-count {
+    color: var(--detail-muted);
+    font-size: 13px;
+}
+
+/* ── CORPS ───────────────────────────────────────────────── */
+.detail-body {
+    padding: 48px 24px 80px;
+}
+
+.detail-section {
+    margin-bottom: 48px;
+}
+
+.detail-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--detail-gold);
+    margin: 0 0 18px;
+}
+
+/* Description */
+.detail-description {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--detail-muted);
+    max-width: 720px;
+    margin: 0;
+}
+
+/* ── NOTATION ────────────────────────────────────────────── */
+.detail-rating-section {
+    background: var(--detail-card);
+    border: 1px solid var(--detail-border);
+    border-radius: 14px;
+    padding: 32px;
+    max-width: 600px;
+}
+
+.rating-form { margin-top: 8px; }
+
+/* Étoiles cliquables */
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: rgba(255,255,255,0.15);
+    cursor: pointer;
+    padding: 2px;
+    transition: color 0.1s, transform 0.1s;
+    line-height: 1;
+}
+.star-btn:hover        { transform: scale(1.2); }
+.star-btn.hovered      { color: var(--detail-gold2); }
+.star-btn.active       { color: var(--detail-gold); }
+
+.star-label {
+    margin-left: 10px;
+    font-size: 13px;
+    color: var(--detail-muted);
+    white-space: nowrap;
+}
+
+/* Bouton envoyer */
+.btn-rate {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: var(--detail-gold);
+    color: #0D0D0F;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+}
+.btn-rate:hover:not(:disabled) {
+    background: var(--detail-gold2);
+    transform: translateY(-1px);
+}
+.btn-rate:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* Alertes flash */
+.detail-alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.detail-alert-success {
+    background: rgba(72,199,142,0.12);
+    border: 1px solid rgba(72,199,142,0.3);
+    color: #48c78e;
+}
+.detail-alert-error {
+    background: rgba(240,80,80,0.12);
+    border: 1px solid rgba(240,80,80,0.3);
+    color: #f05050;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 680px) {
+    .detail-hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 32px;
+    }
+    .detail-poster {
+        width: 140px;
+    }
+    .detail-poster-fallback {
+        width: 140px;
+        height: 210px;
+    }
+    .star-btn { font-size: 22px; }
+    .detail-rating-section { padding: 24px 18px; }
+}

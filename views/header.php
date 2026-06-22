@@ -28,6 +28,7 @@
                 <a href="../views/film_page.view.php">Accueil</a>
                 <a href="#">Genres</a>
                 <a href="#">Contact</a>
+                
             </nav>
 
             <div class="user-profile">

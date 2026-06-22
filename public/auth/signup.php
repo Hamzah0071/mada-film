@@ -1,7 +1,7 @@
 <?php
-// views/inscription.view.php
+// public/auth/signup.php
 session_start();
-require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../../config/db.php';
 
 // Initialisation des variables
 $email     = '';
@@ -23,25 +23,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST['action'] ?? '') === 'signu
 
     if (empty($errors)) {
         try {
-            $check = $pdo->prepare("SELECT id_user FROM Users WHERE email = ?");
+            $check = $pdo->prepare("SELECT id_user FROM users WHERE email = ?");
             $check->execute([$email]);
 
             if ($check->fetch()) {
                 $errors[] = "Cette adresse email est déjà utilisée.";
             } else {
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = $pdo->prepare("INSERT INTO Users (name_user, email, password, role) VALUES (?, ?, ?, 'client')");
+                $stmt = $pdo->prepare("INSERT INTO users (name_user, email, password, role) VALUES (?, ?, ?, 'client')");
                 $stmt->execute([$name_user, $email, $hash]);
 
                 $_SESSION['id_user']   = (int) $pdo->lastInsertId();
                 $_SESSION['name_user'] = htmlspecialchars($name_user, ENT_QUOTES, 'UTF-8');
                 $_SESSION['role']      = 'client';
 
-                header("Location: genres.php");
+                header("Location: ../client/films.php");
                 exit();
             }
         } catch (PDOException $e) {
             $errors[] = "Une erreur technique est survenue.";
+            error_log("[signup.php] Erreur PDO: " . $e->getMessage());
         }
     }
 }
@@ -52,10 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST['action'] ?? '') === 'signu
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription — MG Film</title>
-    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
-    <link rel="stylesheet" href="../assets/css/variables.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/auth.css">
+    <link rel="stylesheet" href="../../assets/css/variables.css">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/auth.css">
 </head>
 <body>
 
@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST['action'] ?? '') === 'signu
         </form>
 
         <div class="auth-footer">
-            Déjà inscrit ? <a href="connexion.view.php">Se connecter</a>
+            Déjà inscrit ? <a href="login.php">Se connecter</a>
         </div>
     </div>
 </div>

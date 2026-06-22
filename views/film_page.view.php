@@ -39,7 +39,7 @@ require_once __DIR__ . '/header.php';
 
 <main class="container">
     <section class="hero-section" style="padding: var(--spacing-xl) 0; text-align: center; background: var(--secondary-color); color: var(--text-light); border-radius: var(--border-radius); margin-top: var(--spacing-md);">
-        <h2>Bonjour, <span><?= htmlspecialchars($name_user) ?></span> 👋</h2>
+        
         <p>
             <?php if (!empty($is_personalized)): ?>
                 Films sélectionnés selon vos genres préférés
